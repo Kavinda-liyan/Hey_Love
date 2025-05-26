@@ -89,6 +89,7 @@ const Landing = () => {
               Click_Action={handleNav}
               icon_Lable={faArrowRight}
               icon_Flex={false}
+              Btn_color="purple"
             />
           </div>
           <div className={`${showError == false ? "hidden" : ""}`}>

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../Components/Buttons/Button";
 import PageWrapper from "./PageWrapper";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Images from "../Components/ImageCards/Images";
 import Gift_Box from "../assets/Images/Box.gif";
 import HappyBirthdayCat from "../assets/Images/Happy Birthday GIF by Tutimon.gif";
@@ -16,6 +16,7 @@ type bottomTxtProp = {
 const HappyBirthDay = () => {
   const navigate = useNavigate();
   const handleBack = () => navigate("/");
+  const step01=useNavigate();
 
   const [ImageFold, setImageFold] = useState<string>(Gift_Box);
   const [bgColor, setBgColor] = useState<string>("bg-purple-500");
@@ -23,19 +24,22 @@ const HappyBirthDay = () => {
     text: "click me",
     color: "text-gray-50",
   });
+  const [btnVisible, setBtnVisible] = useState<boolean>(false);
 
   const imageRef = useRef(null);
   const textRef = useRef(null);
+  const btnRef = useRef(null);
 
   const onGiftOpen = () => {
     setImageFold(HappyBirthdayCat);
     setBgColor("bg-purple-500");
     setBottomTxt({
       text: "Happy Birth Day Chuutii !",
-      color: "text-gray-900",
+      color: "text-gray-50",
     });
 
-    
+    setBtnVisible(true);
+
     gsap.fromTo(
       imageRef.current,
       { scale: 0, opacity: 0 },
@@ -46,7 +50,16 @@ const HappyBirthDay = () => {
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, delay: 1 }
     );
+    gsap.fromTo(
+      btnRef.current,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 1.5 }
+    );
   };
+
+  const HandleStep01=()=>{
+    step01('/step_1');
+  }
 
   return (
     <main>
@@ -58,6 +71,7 @@ const HappyBirthDay = () => {
               Click_Action={handleBack}
               icon_Lable={faArrowLeft}
               icon_Flex={true}
+              Btn_color="purple"
             />
           </div>
 
@@ -70,9 +84,24 @@ const HappyBirthDay = () => {
 
             <div
               ref={textRef}
-              className={`px-2 py-2 font-mono font-semibold ${bottomTxt.color}`}
+              className={`px-2 py-2 font-mono font-semibold text-lg ${bottomTxt.color}`}
             >
               <p>{bottomTxt.text}</p>
+            </div>
+            <div
+              className={`text-center flex flex-col items-center justify-center py-4 ${
+                btnVisible == false ? "hidden" : ""
+              }`}
+              ref={btnRef}
+            >
+              <p className="text-gray-50">Wanna Discover my 'Love' ?</p>
+              <Button
+                Btn_Lable="Click Me"
+                icon_Flex={false}
+                icon_Lable={faArrowRight}
+                Click_Action={HandleStep01}
+                Btn_color="purple"
+              />
             </div>
           </div>
         </div>
