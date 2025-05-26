@@ -19,7 +19,8 @@ const Button: FC<ButtonProp> = ({
     <>
       <button
         className={`flex items-center ${icon_Flex?'flex-row-reverse':''}  font-mono text-gray-50 text-2xl 
-          px-4 py-2 m-2 bg-purple-900 rounded-full border border-purple-100 hover:bg-purple-600 focus-visible:bg-purple-500`}
+          px-4 py-2 m-2 bg-purple-900 rounded-full border border-purple-100 hover:bg-purple-600 focus-visible:bg-purple-500
+          hover:cursor-pointer`}
         onClick={Click_Action}
       >
         {Btn_Lable}

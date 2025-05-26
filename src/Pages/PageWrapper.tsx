@@ -7,7 +7,7 @@ type PageProps = {
 
 const PageWrapper: FC<PageProps> = ({ children,Bg_Color='bg-purple' }) => {
   return (
-    <main className="h-dvh relative w-dvw overflow-hidden">
+    <main className="h-dvh relative w-dvw overflow-hidden font-mono">
       <div className={`${Bg_Color} flex  h-full flex-col items-center justify-center gap-5 `}>
         {children}
       </div>

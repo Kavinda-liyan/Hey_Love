@@ -18,7 +18,7 @@ const HappyBirthDay = () => {
   const handleBack = () => navigate("/");
 
   const [ImageFold, setImageFold] = useState<string>(Gift_Box);
-  const [bgColor, setBgColor] = useState<string>("bg-bloodRed");
+  const [bgColor, setBgColor] = useState<string>("bg-purple-500");
   const [bottomTxt, setBottomTxt] = useState<bottomTxtProp>({
     text: "click me",
     color: "text-gray-50",
@@ -29,13 +29,13 @@ const HappyBirthDay = () => {
 
   const onGiftOpen = () => {
     setImageFold(HappyBirthdayCat);
-    setBgColor("bg-catWhite");
+    setBgColor("bg-purple-500");
     setBottomTxt({
       text: "Happy Birth Day Chuutii !",
       color: "text-gray-900",
     });
 
-    // Animation sequence
+    
     gsap.fromTo(
       imageRef.current,
       { scale: 0, opacity: 0 },
