@@ -6,7 +6,7 @@ type Images={
 
 const Images:FC<Images> = ({source}) => {
   return (
-    <img src={source} alt={source} className='h-64 p-2 m-2 hover:cursor-pointer hover:animate-spin duration-500'/>
+    <img src={source} alt={source} className='h-64 p-2 m-2 hover:cursor-pointer hover:scale-75 duration-500'/>
   )
 }
 

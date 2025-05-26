@@ -1,10 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Wrapper from "./Pages/Wrapper";
 
 function App() {
   return (
     <>
-      <Wrapper />
+      <BrowserRouter>
+        <Wrapper />
+      </BrowserRouter>
     </>
   );
 }
