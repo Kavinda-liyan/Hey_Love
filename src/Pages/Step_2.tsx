@@ -25,7 +25,7 @@ const Step_2 = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const [showNext, setShowNext] = useState(false);
-  const [ setHasStopped] = useState(false);
+  const [hasStopped, setHasStopped] = useState(false);
 
   const hasFadedRef = useRef(false);
 
@@ -82,7 +82,8 @@ const Step_2 = () => {
         .then(() => {
           setIsPlaying(true);
           setShowImage(true);
-          setHasStopped(false);
+          hasStopped?
+          setHasStopped(false):setHasStopped(true);
         })
         .catch((e) => {
           console.log("Autoplay failed:", e);
