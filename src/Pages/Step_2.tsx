@@ -25,7 +25,7 @@ const Step_2 = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const [showNext, setShowNext] = useState(false);
-  const [hasStopped, setHasStopped] = useState(false);
+  const [ setHasStopped] = useState(false);
 
   const hasFadedRef = useRef(false);
 
