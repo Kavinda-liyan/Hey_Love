@@ -9,8 +9,10 @@ import Devi1 from "../assets/Images/Devi_1.jpg";
 import Adarei from "../assets/Audio/Adarei Uthuranna~1.mp3";
 import Button from "../Components/Buttons/Button";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Step_2 = () => {
+  const navigate = useNavigate();
   const txt1Ref = useRef(null);
   const Img1Ref = useRef(null);
   const txt2Ref = useRef(null);
@@ -18,12 +20,14 @@ const Step_2 = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const Img2Ref = useRef(null);
   const aduRef = useRef(null);
-  const BtnRef=useRef(null);
+  const BtnRef = useRef(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [showImage, setShowImage] = useState(false);
+  const [showNext, setShowNext] = useState(false);
+  const [hasStopped, setHasStopped] = useState(false);
+
   const hasFadedRef = useRef(false);
-  const [showNext,setShowNext]=useState(false);
 
   useEffect(() => {
     gsap.fromTo(
@@ -51,7 +55,7 @@ const Step_2 = () => {
       { y: 40, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, delay: 2.0 }
     );
-     gsap.fromTo(
+    gsap.fromTo(
       BtnRef.current,
       { y: 40, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, delay: 0.5 }
@@ -63,7 +67,7 @@ const Step_2 = () => {
       gsap.fromTo(
         Img2Ref.current,
         { y: 150, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1,delay:1, ease: "back.out(1.7)"  }
+        { y: 0, opacity: 1, duration: 1, delay: 1, ease: "back.out(1.7)" }
       );
     }
   }, [showImage]);
@@ -78,6 +82,7 @@ const Step_2 = () => {
         .then(() => {
           setIsPlaying(true);
           setShowImage(true);
+          setHasStopped(false);
         })
         .catch((e) => {
           console.log("Autoplay failed:", e);
@@ -87,7 +92,20 @@ const Step_2 = () => {
     }
 
     setShowNext(true);
+  };
 
+  const handleStopAudio = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+    }
+
+    setIsPlaying(false);
+    setShowImage(false);
+    setShowNext(false);
+    setHasStopped(true);
   };
 
   const handleTimeUpdate = () => {
@@ -112,9 +130,9 @@ const Step_2 = () => {
     }, 150);
   };
 
-  const handleNext=()=>{
-
-  }
+  const handleNext = () => {
+    navigate("/step_1/step_2/step_3");
+  };
 
   return (
     <PageWrapper Bg_Color="bg-rose-500">
@@ -159,7 +177,7 @@ const Step_2 = () => {
             </div>
           )}
 
-          <div className="mt-4 flex justify-center" ref={aduRef}>
+          <div className="mt-4 flex justify-center gap-4 items-center" ref={aduRef}>
             {!isPlaying ? (
               <button
                 onClick={handlePlayAudio}
@@ -168,16 +186,34 @@ const Step_2 = () => {
                 ▶ Play Me..!
               </button>
             ) : (
-              <span className="text-sm italic text-white">
-                Audio is playing...
-              </span>
+              <>
+                <span className="text-sm italic text-white">
+                  Audio is playing...
+                </span>
+                <button
+                  onClick={handleStopAudio}
+                  className="bg-gray-800 hover:bg-gray-600 text-white font-mono px-4 py-2 rounded-full"
+                >
+                  ⏹ Stop
+                </button>
+              </>
             )}
           </div>
 
           <audio ref={audioRef} src={Adarei} preload="auto" />
-          <div className={`text-center flex items-center justify-center p-2 m-2 ${showNext?'':'hidden'}`} ref={BtnRef}>
-            <Button Btn_Lable="Next Chapter" icon_Lable={faArrowRight} icon_Flex={false} Btn_color="bg-rose-900" Click_Action={handleNext}/>
-
+          <div
+            className={`text-center flex items-center justify-center p-2 m-2 ${
+              showNext ? "" : "hidden"
+            }`}
+            ref={BtnRef}
+          >
+            <Button
+              Btn_Lable="Next Chapter"
+              icon_Lable={faArrowRight}
+              icon_Flex={false}
+              Btn_color="bg-rose-900"
+              Click_Action={handleNext}
+            />
           </div>
         </div>
       </div>
