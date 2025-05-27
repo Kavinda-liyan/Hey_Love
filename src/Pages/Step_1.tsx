@@ -1,5 +1,4 @@
 import { faArrowRight, faHome } from "@fortawesome/free-solid-svg-icons";
-import Button_2 from "../Components/Buttons/Button_2";
 import PageWrapper from "./PageWrapper";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
