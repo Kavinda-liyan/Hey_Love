@@ -62,8 +62,8 @@ const Step_2 = () => {
     if (showImage && Img2Ref.current) {
       gsap.fromTo(
         Img2Ref.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1,delay:0.5 }
+        { y: 150, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1,delay:1, ease: "back.out(1.7)"  }
       );
     }
   }, [showImage]);
@@ -113,7 +113,7 @@ const Step_2 = () => {
   };
 
   const handleNext=()=>{
-    
+
   }
 
   return (
