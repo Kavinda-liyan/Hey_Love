@@ -7,7 +7,7 @@ type ButtonProp = {
   Click_Action?: () => void;
   icon_Lable: IconProp;
   icon_Flex: boolean;
-  Btn_color:string;
+  Btn_color: string;
 };
 
 const Button: FC<ButtonProp> = ({
@@ -15,13 +15,15 @@ const Button: FC<ButtonProp> = ({
   Click_Action,
   icon_Lable,
   icon_Flex = true,
-  Btn_color
+  Btn_color,
 }) => {
   return (
     <>
       <button
-        className={`flex items-center ${icon_Flex?'flex-row-reverse':''}  font-mono text-gray-50 text-md 
-          px-4 py-2 m-2 bg-${Btn_color}-900 rounded-full border border-${Btn_color}-100 hover:bg-${Btn_color}-600 focus-visible:bg-purple-500
+        className={`flex items-center ${
+          icon_Flex ? "flex-row-reverse" : ""
+        }  font-mono text-gray-50 text-md 
+          px-4 py-2 m-2 ${Btn_color} rounded-full border border-gray-50 hover:shadow-md 
           hover:cursor-pointer`}
         onClick={Click_Action}
       >

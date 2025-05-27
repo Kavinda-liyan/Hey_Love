@@ -71,14 +71,14 @@ const HappyBirthDay = () => {
               Click_Action={handleBack}
               icon_Lable={faArrowLeft}
               icon_Flex={true}
-              Btn_color="purple"
+              Btn_color="bg-purple-900"
             />
           </div>
 
           <div className="ml-auto mr-auto mt-auto mb-auto text-center">
             <button onClick={onGiftOpen}>
               <div ref={imageRef}>
-                <Images source={ImageFold} />
+                <Images source={ImageFold} height="h-70"/>
               </div>
             </button>
 
@@ -100,7 +100,7 @@ const HappyBirthDay = () => {
                 icon_Flex={false}
                 icon_Lable={faArrowRight}
                 Click_Action={HandleStep01}
-                Btn_color="purple"
+                Btn_color="bg-purple-900"
               />
             </div>
           </div>

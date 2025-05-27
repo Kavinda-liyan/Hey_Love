@@ -60,7 +60,7 @@ const Landing = () => {
     <>
       <PageWrapper Bg_Color="bg-purple-500">
         <div className="ml-auto mr-auto " ref={imageRef}>
-          <Images source={Capybara_01} />
+          <Images source={Capybara_01} height="h-64" />
         </div>
         <div className="flex flex-col items-center">
           <label
@@ -89,7 +89,7 @@ const Landing = () => {
               Click_Action={handleNav}
               icon_Lable={faArrowRight}
               icon_Flex={false}
-              Btn_color="purple"
+              Btn_color="bg-purple-900"
             />
           </div>
           <div className={`${showError == false ? "hidden" : ""}`}>
