@@ -1,4 +1,4 @@
-import { faArrowLeft, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import Button_2 from "./Button_2";
 import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
