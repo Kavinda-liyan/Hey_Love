@@ -1,4 +1,4 @@
-import { faArrowRight, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import PageWrapper from "./PageWrapper";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
@@ -14,9 +14,6 @@ const Step_1 = () => {
   const btnRef = useRef(null);
   const navigate = useNavigate();
 
-  const handleHome = () => {
-    navigate("/");
-  };
 
   useEffect(() => {
     gsap.fromTo(
